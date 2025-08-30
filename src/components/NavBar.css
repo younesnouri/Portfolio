@@ -1,0 +1,208 @@
+/* General Navbar */
+.navbar {
+    width: 98%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    margin-left: 1%;
+    border-radius: 35px;
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+    transition :width 0.4s ease;          /* smooth shrink */
+    transition : padding 0.4s ease;         /* smooth padding shrink */
+    transition :transform 0.4s ease; 
+    border: none;
+   
+    
+    
+  }
+  
+
+  
+  /* Navbar after scroll */
+  .navbar.scrolled {
+    background-color: rgba(28, 28, 28, 0.9); /* glossy dark */
+    backdrop-filter: blur(8px);
+    margin-top: 8px;
+    width: 340px;
+    justify-content: center;
+    left: 50%;                 /* position from the left */
+  transform: translateX(-50%); /* center horizontally */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  transition :width 0.4s ease;          /* smooth shrink */
+  transition : padding 0.4s ease;         /* smooth padding shrink */
+  transition :transform 0.4s ease; 
+  /* Sleek shadow */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.2),
+              /* inset 0 0 0 1px #B0E0E6; */
+    
+  }
+
+  .navbar.scrolled .logo {
+    display: none; /* hide logo when scrolled */
+  }
+  
+  /* Container */
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.6rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    
+    color: #B0E0E6; /* dark initially */
+    transition: color 0.3s ease;
+    font-weight: bold;
+    font-family: Space Grotesk ; /* 👈 Same as logo */
+  font-size: 1rem; /* Adjust size */
+  font-weight: 800; /* Slightly bold for visibility */
+  text-transform: uppercase; /* Optional: make links uppercase */
+  letter-spacing: 0.5px; /* Slight spacing for a cleaner look */
+  }
+  .navbar.scrolled .navbar-logo {
+    color: #B0E0E6; /* light on dark bg */
+  }
+  .navbar.scrolled .navbar-links a {
+    color: #B0E0E6; /* light on dark bg */
+  }
+  /* Desktop Links */
+  /* Navbar links container: keep flex layout */
+/* Navbar links container: keep flex layout */
+.navbar-links,
+.mobile-menu {
+  display: none; /* hide links by default */
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Each link */
+.navbar-links a,
+.mobile-menu a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #B0E0E6;
+  font-family: var(--font-fira-code); /* 👈 Same as logo */
+  font-size: 1rem; /* Adjust size */
+  font-weight: 500; /* Slightly bold for visibility */
+  text-transform: uppercase; /* Optional: make links uppercase */
+  letter-spacing: 0.5px; /* Slight spacing for a cleaner look */
+  
+}
+
+/* Active link */
+.navbar-links a.active,
+.mobile-menu a.active {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #E0F7FA;
+}
+
+navbar.scrolled .navbar-links a.active,
+.navbar.scrolled .mobile-menu a.active {
+    background-color: aquamarine;
+  color: black;
+}
+
+/* Hover effect (non-active) */
+.navbar-links a:hover:not(.active),
+.mobile-menu a:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* Hamburger */
+.navbar-hamburger {
+  display: block; /* show on mobile */
+}
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+.hamburger-icon {
+  width: 24px;
+  height: 24px;
+  color: #1C1C1C;
+  transition: color 0.3s ease;
+}
+.navbar.scrolled .hamburger-icon {
+  color: #E0F7FA;
+}
+
+/* Mobile Menu */
+/* Mobile Menu */
+.mobile-menu {
+    max-height: 0; /* start hidden */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #1C1C1C;
+    transition: max-height 0.3s ease; /* smooth slide */
+    opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .mobile-menu a {
+    padding: 0.75rem 1.5rem;
+    color: #E0F7FA;
+    text-decoration: none;
+    border-top: 1px solid #333;
+    transition: color 0.3s;
+  }
+  
+  .mobile-menu a:hover {
+    color: aquamarine;
+  }
+  
+  /* When menu is open */
+  .mobile-menu.open {
+    max-height: 500px; /* large enough to show all links */
+    opacity: 1;
+  transform: translateY(0);
+  }
+
+/* Responsive: Desktop */
+@media (min-width: 768px) {
+    
+  .navbar-links {
+    display: flex; /* show desktop links on larger screens */
+    
+  }
+  .navbar-hamburger {
+    display: none; /* hide hamburger on desktop */
+  }
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+      background-color: rgba(28, 28, 28, 1);
+      
+      border-radius: 0px;
+    }
+    .navbar.navbar.scrolled {
+        width: 100%;
+      }
+    .navbar-logo{
+        color: #E0F7FA;
+    }
+
+    .hamburger-icon {
+        color: #E0F7FA;
+    }
+  }

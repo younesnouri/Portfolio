@@ -1,6 +1,23 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from 'next/font/google';
+
 import "./globals.css";
+
+import { Fira_Code } from "next/font/google";
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'], // choose weights you need
+});
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +42,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable} ${firaCode.variable} antialiased`}
+
       >
         {children}
       </body>

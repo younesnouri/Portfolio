@@ -1,0 +1,244 @@
+.projects-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem;
+    
+    gap: 1rem;
+    border-top-left-radius: 55px;
+    border-top-right-radius: 55px;
+    
+    
+  }
+  
+  .projects-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Fira Code', monospace;
+    color: aquamarine;
+    margin-top: 1rem;
+   /* space from edge */
+    align-self: center;
+  }
+  
+  .projects-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center cards + indicators */
+    width: 100%;
+    
+  }
+  
+  .project-card {
+    position: relative;
+    width: 70%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+  }
+  
+  /* Image slide animation */
+  .project-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  .project-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Keep it behind text */
+    pointer-events: none; /* ⬅️ Allow clicks through overlay */
+  }
+  
+  
+  
+  .project-image.left {
+    animation-name: slideLeft;
+  }
+  
+  .project-image.right {
+    animation-name: slideRight;
+  }
+  
+  @keyframes slideLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* Overlay text */
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 10%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .project-title {
+    font-family: 'Fira Code', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+  }
+  
+  .project-description {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1 rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .project-tools {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: aquamarine;
+    font-weight: 800;
+  }
+  
+  /* Nav arrows */
+  .project-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: #b0e0e6;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+    border: none;
+    background: none;
+  }
+  
+  
+  
+  .project-nav.left { left: 1rem; }
+  .project-nav.right { right: 1rem; }
+  
+  /* Indicators */
+  .project-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  
+  .project-indicators .indicator {
+    width: 30px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .project-indicators .indicator.active {
+    width: 40px;
+    background-color: aquamarine;
+  }
+  
+
+  .project-image.enter-left {
+    animation: slideInFromLeft 0.4s ease forwards;
+  }
+  
+  .project-image.enter-right {
+    animation: slideInFromRight 0.4s ease forwards;
+  }
+  
+  /* Keyframes for fast horizontal scroll effect */
+  @keyframes slideInFromLeft {
+    0% { transform: translateX(-120%); opacity: 0; }
+    50% { transform: translateX(20%); opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideInFromRight {
+    0% { transform: translateX(120%); opacity: 0; }
+    50% { transform: translateX(-20%); opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+
+  .project-card:hover {
+    transform: scale(1.01);
+    transition: transform 0.3s ease;
+  
+    .project-overlay {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+  }
+
+
+  /* Hover effect on arrows */
+  .project-nav:hover {
+    
+    transform: translateY(-50%) scale(1.2);
+    color: aquamarine;
+    transition: all 0.3s ease;
+  }
+
+
+ /* Background image */
+.project-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  /* Hover video */
+  .project-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+       /* distance from right */
+  
+   
+  }
+  
+  .project-image:hover .project-video {
+    opacity: 1;
+  }
+  
+  /* Optional: scale & shadow on hover */
+  
