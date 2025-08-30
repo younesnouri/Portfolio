@@ -6,7 +6,7 @@ import About from "./About";
 
 export default function SlidePages() {
   const [currentPage, setCurrentPage] = useState(0);
-  const pages = [<Hero />, <About />];
+  const pages = [Hero, About]; // Store components, not JSX
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ export default function SlidePages() {
       >
         {pages.map((Page, i) => (
           <div key={i} style={{ height: "150vh" }}>
-            {Page}
+            <Page />
           </div>
         ))}
       </div>

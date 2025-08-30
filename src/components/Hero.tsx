@@ -1,11 +1,11 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "./Hero.css";
 
 export default function Hero() {
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const glowRef = useRef<HTMLDivElement>(null);
 
@@ -16,8 +16,7 @@ export default function Hero() {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        let particles: { x: number; y: number; vx: number; vy: number; size: number }[] = [];
-
+        const particles: { x: number; y: number; vx: number; vy: number; size: number }[] = [];
         for (let i = 0; i < 20; i++) {
             particles.push({
                 x: Math.random() * window.innerWidth,
@@ -27,8 +26,6 @@ export default function Hero() {
                 size: Math.random() * 3 + 1,
             });
         }
-
-        
 
         const animate = () => {
             if (!ctx) return;
@@ -47,14 +44,11 @@ export default function Hero() {
             });
             requestAnimationFrame(animate);
         };
-
         animate();
 
         const handleResize = () => {
-            if (canvas) {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         };
         window.addEventListener("resize", handleResize);
         handleResize();
@@ -62,53 +56,41 @@ export default function Hero() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-
-
+    // Mouse glow
     useEffect(() => {
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         let glowX = mouseX;
         let glowY = mouseY;
-      
+
         const handleMouseMove = (e: MouseEvent) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         };
-      
+
         const animateGlow = () => {
-          glowX += (mouseX - glowX) * 0.1; // smoothing factor
-          glowY += (mouseY - glowY) * 0.1;
-      
-          if (glowRef.current) {
-            glowRef.current.style.left = `${glowX}px`;
-glowRef.current.style.top = `${glowY}px`;
-          }
-      
-          requestAnimationFrame(animateGlow);
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+
+            if (glowRef.current) {
+                glowRef.current.style.left = `${glowX}px`;
+                glowRef.current.style.top = `${glowY}px`;
+            }
+
+            requestAnimationFrame(animateGlow);
         };
-      
+
         window.addEventListener("mousemove", handleMouseMove);
         animateGlow();
-      
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-      }, []);
-      
 
-    
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
 
     return (
         <main className="hero">
-   
             <canvas ref={canvasRef} className="particles-canvas" />
-
-
-            
-            {/* Mouse Glow */}
             <div ref={glowRef} className="mouse-glow" />
 
-
-
-            {/* Hero content */}
             <motion.div
                 className="content"
                 initial={{ opacity: 0, y: 50 }}
@@ -116,6 +98,7 @@ glowRef.current.style.top = `${glowY}px`;
                 transition={{ duration: 1 }}
             >
                 <Typewriter text="Hey, Younes here!" speed={70} className="title" />
+
                 <motion.p
                     className="subtitle"
                     initial={{ opacity: 0, y: 30 }}
@@ -125,6 +108,7 @@ glowRef.current.style.top = `${glowY}px`;
                     <span className="terminal-prefix">&gt;</span>
                     Full-Stack Developer | Problem Solver
                 </motion.p>
+
                 <motion.p
                     className="subtitle"
                     initial={{ opacity: 0, y: 30 }}
@@ -132,25 +116,33 @@ glowRef.current.style.top = `${glowY}px`;
                     transition={{ delay: 0.8 }}
                 >
                     <span className="terminal-prefix">&gt;</span>
-                    Welcome to my portfolio. Scroll to see more about me, skills and projects.                     
+                    Welcome to my portfolio. Scroll to see more about me, skills and projects.
                 </motion.p>
 
-                {/* Socials */}
-                <motion.p
+                <motion.div
                     className="subtitle"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 }}
                 >
-                <div className="socials">
-                    <a href="https://github.com/younesnouri" target="_blank" rel="noopener noreferrer">
-                        <FaGithub className="icon" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/younes-nouri-6a4479232/" target="_blank" rel="noopener noreferrer">
-                        <FaLinkedin className="icon" />
-                    </a>
-                </div>
-                </motion.p>
+                    <div className="socials">
+                        <a
+                            href="https://github.com/younesnouri"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaGithub className="icon" />
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/younes-nouri-6a4479232/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaLinkedin className="icon" />
+                        </a>
+                    </div>
+                </motion.div>
+
                 <div className="scrollIndicator">
                     <span className="arrow"></span>
                     <span className="scrollText">Scroll</span>
@@ -161,7 +153,15 @@ glowRef.current.style.top = `${glowY}px`;
 }
 
 // Typewriter
-function Typewriter({ text, speed = 60, className = "" }: { text: string; speed?: number; className?: string }) {
+function Typewriter({
+    text,
+    speed = 60,
+    className = "",
+}: {
+    text: string;
+    speed?: number;
+    className?: string;
+}) {
     const [output, setOutput] = useState("");
 
     useEffect(() => {

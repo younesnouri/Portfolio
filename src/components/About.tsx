@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./About.css";
@@ -67,7 +68,6 @@ export default function About() {
         <span>{"[ ]"}</span>
         <span>{"< />"}</span>
         <span>{"< />"}</span>
-        
       </div>
 
       <div className="section-container">
@@ -79,7 +79,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="section-title">
-            <span className="title-prefix">About me  </span> 
+            <span className="title-prefix">About me</span>
           </h2>
           <div className="title-underline"></div>
         </motion.div>
@@ -97,46 +97,39 @@ export default function About() {
             <div className="about-text-container">
               <div className="property-line">
                 <span className="property-key">name:</span>
-                <span className="property-value">"Younes Nouri"</span>
+                <span className="property-value">Younes Nouri</span>
               </div>
               <div className="property-line">
                 <span className="property-key">role:</span>
-                <span className="property-value">"Full-Stack Developer"</span>
+                <span className="property-value">Full-Stack Developer</span>
               </div>
               <div className="property-line">
                 <span className="property-key">passion:</span>
-                <span className="property-value">"Building innovative solutions"</span>
+                <span className="property-value">Building innovative solutions</span>
               </div>
               <div className="property-line">
                 <span className="property-key">description:</span>
                 <span className="property-value">
-                  "I'm passionate about creating web applications that solve real-world problems.
-                  I love experimenting with new technologies and building projects that challenge me to grow."
+                  I&apos;m passionate about creating web applications that solve real-world problems.
+                  I love experimenting with new technologies and building projects that challenge me to grow.
                 </span>
               </div>
               <div className="property-line">
                 <span className="property-key">tools:</span>
                 <span className="property-value">
-                  
-
-                    <div className="tools-grid">
-                      {tools.map((tool) => (
-                        <div className="data-project-tools" key={tool.name}>
-                          
-
-
-                          <span className="tool-badge">
-                          <span className="blinking">{'>'} </span>
-                            {tool.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  
+                  <div className="tools-grid">
+                    {tools.map((tool) => (
+                      <div className="data-project-tools" key={tool.name}>
+                        <span className="tool-badge">
+                          <span className="blinking">&gt; </span>
+                          {tool.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </span>
               </div>
             </div>
-
-
           </motion.div>
 
           {/* Right Side - Profile Image */}
@@ -149,7 +142,6 @@ export default function About() {
             <div className="image-container">
               <div className="image-frame">
                 <img src="/profile.jpg" alt="Younes Nouri" className="profile-image" />
-                
               </div>
               <div className="image-caption">
                 <span className="caption-text"></span>
@@ -157,12 +149,6 @@ export default function About() {
             </div>
           </motion.div>
         </div>
-
-        {/* Skills Section */}
-        {/* Tools Section */}
-
-
-
       </div>
     </section>
   );
