@@ -196,7 +196,8 @@ navbar.scrolled .navbar-links a.active,
       border-radius: 0px;
     }
     .navbar.navbar.scrolled {
-        width: 100%;
+        border-radius: 20px;
+        
       }
     .navbar-logo{
         color: #E0F7FA;

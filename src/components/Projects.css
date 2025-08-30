@@ -242,3 +242,104 @@
   
   /* Optional: scale & shadow on hover */
   
+  /* Mobile / Small devices */
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 2rem 0.5rem;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .projects-title {
+    font-size: 1.2rem;
+  }
+
+  .projects-content {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .project-card {
+    width: 90%;
+    height: 400px;
+  }
+
+  .project-image {
+    border-radius: 12px;
+  }
+
+  .project-overlay {
+    padding: 0.5rem;
+    margin-bottom: 5%;
+  }
+
+  .project-title {
+    font-size: 1rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+
+  .project-tools {
+    font-size: 0.8rem;
+  }
+
+  .project-nav {
+    font-size: 1.4rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .project-indicators .indicator {
+    width: 20px;
+    height: 3px;
+  }
+}
+
+/* Extra small screens / smartphones */
+@media (max-width: 480px) {
+  .project-card {
+    width: 95%;
+    height: 350px;
+  }
+
+  .projects-title {
+    font-size: 1rem;
+  }
+
+  .project-title {
+    font-size: 0.9rem;
+  }
+
+  .project-description {
+    font-size: 0.8rem;
+  }
+
+  .project-tools {
+    font-size: 0.7rem;
+  }
+
+  .project-nav {
+    font-size: 1.2rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .project-indicators .indicator {
+    width: 15px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card:hover .project-overlay {
+    opacity: 1; /* keep overlay always visible */
+  }
+
+  .project-image:hover .project-video {
+    opacity: 0.8; /* optional: still show video slightly, or disable completely */
+  }
+
+  .project-card {
+    transform: none; /* no scaling on tap */
+  }
+}
