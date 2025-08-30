@@ -23,7 +23,7 @@ const projects: Project[] = [
         title: "MovieGuy",
         description:
             "A web based application to track and review films with an ML based Recommendation System",
-        image: "/MovieGuy2.jpg",
+        image: "/movieGuy2.jpg",
         video: "/movieguy.mp4", // hover video
         tools: "React, Node.js, Express, PostgreSQL, Python, TensorFlow",
         link: "#",
