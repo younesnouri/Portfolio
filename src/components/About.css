@@ -15,7 +15,7 @@
   .about-section {
     min-height: 100vh;
     position: relative;
-    padding: 4rem 2rem;
+    
     
     opacity: 0;
     transform: translateY(3rem);
@@ -473,7 +473,7 @@
   @media (max-width: 968px) {
     .about-content {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
     
     .stats-grid {
@@ -511,6 +511,7 @@
       font-size: 0.8rem;
       padding: 0.4rem 0.8rem;
     }
+    
   }
   
   @media (max-width: 480px) {
@@ -531,6 +532,8 @@
     .property-key {
       min-width: auto;
     }
+
+   
   }
 
 
